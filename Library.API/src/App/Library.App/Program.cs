@@ -1,8 +1,10 @@
+using FluentValidation;
 using Library.App.Middleware;
 using Library.App.Utility;
 using Library.Data.Models.Security;
 using Library.Infrastructure;
 using Library.Services;
+using Library.Services.Validators;
 using Serilog;
 
 
@@ -16,6 +18,8 @@ await builder.Services.AddInfrastructureDependenciesAsync(builder.Configuration)
 builder.Services.AddServicesDependencies(builder.Configuration);
 
 builder.Services.AddSwaggerDocumantation();
+
+builder.Services.AddValidatorsFromAssemblyContaining<BookDtoValidator>();
 
 
 

@@ -1,7 +1,9 @@
 ﻿using Library.API.Controllers;
 using Library.Services.DTOs;
 using Library.Services.Interfaces;
+using Library.Services.Validators;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Library.App.Controllers
@@ -32,7 +34,18 @@ namespace Library.App.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(PatronDto patronDto)
         {
-            if (!ModelState.IsValid) { return BadRequest(ModelState); }
+            var validator = new PatronDtoValidator();
+            var validationResult = await validator.ValidateAsync(patronDto);
+
+            if (!validationResult.IsValid)
+            {
+                foreach (var error in validationResult.Errors)
+                {
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                }
+
+                return BadRequest(ModelState);
+            }
 
             var result =  await _patronService.AddAsync(patronDto);
             return GetResult(result.ErrorMessages, result.EnumResult, result.Result);
@@ -42,8 +55,18 @@ namespace Library.App.Controllers
         [HttpPut]
         public async Task<IActionResult> Update(int id,PatronDto patronDto)
         {
-            if (!ModelState.IsValid) { return BadRequest(ModelState); }
+            var validator = new PatronDtoValidator();
+            var validationResult = await validator.ValidateAsync(patronDto);
 
+            if (!validationResult.IsValid)
+            {
+                foreach (var error in validationResult.Errors)
+                {
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                }
+
+                return BadRequest(ModelState);
+            }
             var result = await _patronService.UpdateAsync(id, patronDto);
             return GetResult(result.ErrorMessages, result.EnumResult, result.Result);
 

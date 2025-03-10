@@ -95,8 +95,17 @@ namespace Tests.Controllers
         [Fact]
         public async Task Create_ShouldReturnOk_WhenPatronIsValid()
         {
-            var patronDto = new PatronDto { FirstName = "John", LastName = "Doe" };
-
+            var patronDto = new PatronDto
+            {
+                FirstName = "John",
+                LastName = "Doe",
+                Email = "john.doe@example.com",
+                PhoneNumber = "1234567890",
+                DateOfBirth = new DateTime(1990, 1, 1),
+                Address = "123 Main St",
+                MembershipStartDate = DateTime.UtcNow,
+                IsActive = true
+            };
             var operationResult = new OperationResult<HttpStatusCode, bool>
             {
                 Result = true,
@@ -120,7 +129,7 @@ namespace Tests.Controllers
                 FirstName = "",
                 LastName = "Doe",
                 Email = "john.doe@example.com",
-                PhoneNumber = "123-456-7890",
+                PhoneNumber = "1234567890",
                 DateOfBirth = new DateTime(1990, 1, 1),
                 Address = "123 Main St",
                 MembershipStartDate = DateTime.UtcNow,
@@ -152,8 +161,18 @@ namespace Tests.Controllers
         [Fact]
         public async Task Update_ShouldReturnOk_WhenPatronExists()
         {
-            var patronDto = new PatronDto { FirstName = "John", LastName = "Doe" };
 
+            var patronDto = new PatronDto
+            {
+                FirstName = "John",
+                LastName = "Doe",
+                Email = "john.doe@example.com",
+                PhoneNumber = "1234567890",
+                DateOfBirth = new DateTime(1990, 1, 1),
+                Address = "123 Main St",
+                MembershipStartDate = DateTime.UtcNow,
+                IsActive = true
+            };
             var operationResult = new OperationResult<HttpStatusCode, bool>
             {
                 Result = true,
@@ -177,7 +196,7 @@ namespace Tests.Controllers
                 FirstName = "",
                 LastName = "Doe",
                 Email = "john.doe@example.com",
-                PhoneNumber = "123-456-7890",
+                PhoneNumber = "1234567890",
                 DateOfBirth = new DateTime(1990, 1, 1),
                 Address = "123 Main St",
                 MembershipStartDate = DateTime.UtcNow,
@@ -206,7 +225,18 @@ namespace Tests.Controllers
         [Fact]
         public async Task Update_ShouldReturnNotFound_WhenPatronDoesNotExist()
         {
-            var patronDto = new PatronDto { FirstName = "John", LastName = "Doe" };
+
+            var patronDto = new PatronDto
+            {
+                FirstName = "Mark",
+                LastName = "Doe",
+                Email = "john.doe@example.com",
+                PhoneNumber = "1234567890",
+                DateOfBirth = new DateTime(1990, 1, 1),
+                Address = "123 Main St",
+                MembershipStartDate = DateTime.UtcNow,
+                IsActive = true
+            };
 
             var operationResult = new OperationResult<HttpStatusCode, bool>
             {

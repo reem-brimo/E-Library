@@ -1,10 +1,7 @@
-﻿using FluentValidation;
-using FluentValidation.AspNetCore;
-using Library.Data.Configuration;
+﻿using Library.Data.Configuration;
 using Library.Services.Implementation;
 using Library.Services.Interfaces;
 using Library.Services.Mappings;
-using Library.Services.Validators;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,12 +36,6 @@ namespace Library.Services
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Secret))
                 };
             });
-
-
-
-            services.AddFluentValidationAutoValidation();
-            services.AddValidatorsFromAssemblyContaining<BookDtoValidator>();
-
 
 
             MappingsConfig.ConfigureMappings();

@@ -1,6 +1,8 @@
-﻿using Library.API.Controllers;
+﻿using FluentValidation;
+using Library.API.Controllers;
 using Library.Services.DTOs;
 using Library.Services.Interfaces;
+using Library.Services.Validators;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,8 +34,18 @@ namespace Library.App.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(BookDto bookDto)
         {
-            if (!ModelState.IsValid) { return BadRequest(ModelState); }
+            var validator = new BookDtoValidator();
+            var validationResult = await validator.ValidateAsync(bookDto);
 
+            if (!validationResult.IsValid)
+            {
+                foreach (var error in validationResult.Errors)
+                {
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                }
+
+                return BadRequest(ModelState);
+            }
             var result = await _bookService.AddAsync(bookDto);
             return GetResult(result.ErrorMessages, result.EnumResult, result.Result);
         }
@@ -42,8 +54,18 @@ namespace Library.App.Controllers
         [HttpPut]
         public async Task<IActionResult> Update(int id, BookDto bookDto)
         {
-            if (!ModelState.IsValid) { return BadRequest(ModelState); }
+            var validator = new BookDtoValidator();
+            var validationResult = await validator.ValidateAsync(bookDto);
 
+            if (!validationResult.IsValid)
+            {
+                foreach (var error in validationResult.Errors)
+                {
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                }
+
+                return BadRequest(ModelState);
+            }
             var result = await _bookService.UpdateAsync(id, bookDto);
             return GetResult(result.ErrorMessages, result.EnumResult, result.Result);
 

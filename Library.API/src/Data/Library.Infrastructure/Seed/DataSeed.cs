@@ -1,6 +1,4 @@
-﻿using Bogus;
-using Library.Data.Models;
-using Library.Data.Models.Security;
+﻿using Library.Data.Models.Security;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -27,75 +25,6 @@ namespace Library.Infrastructure.Seed
             {
                 await SeedUsers(services, context);
             }
-
-            //if (!context.Set<Borrow>().Any())
-            //{
-            //    var products = new List<Borrow>();
-            //    for (int i = 1; i <= 10; i++)
-            //    {
-            //        products.Add(new Borrow
-            //        {
-            //            Name = $"Product {i}",
-            //            Price = 10.0 * i,
-            //            Description = $"Description for Product {i}",
-            //            Stock = 100 + i,
-            //            ImageUrl = $"https://example.com/product{i}.jpg"
-            //        });
-            //    }
-            //    context.AddRange(products);
-            //    await context.SaveChangesAsync();
-            //}
-
-            //if (!context.Set<Book>().Any())
-            //{
-            //    var rand = new Random();
-
-            //    var users = context.Users.ToList();
-            //    var orders = new List<Book>();
-            //    for (int i = 1; i <= 10; i++)
-            //    {
-            //        int index = rand.Next(users.Count);
-
-            //        orders.Add(new Book
-            //        {
-            //            UserId = users[index].Id,
-            //            OrderDate = DateTime.Now.AddDays(-i),
-            //            TotalAmount = 0, // Calculated later based on OrderItems
-            //            Address = new Faker().Address.FullAddress()
-
-            //        });
-            //    }
-            //    context.AddRange(orders);
-            //    await context.SaveChangesAsync();
-            //}
-
-            //if (!context.Set<Patron>().Any())
-            //{
-            //    var orders = context.Orders.ToList();
-            //    var products = context.Products.ToList();
-            //    var random = new Random();
-            //    var orderItems = new List<Patron>();
-            //    foreach (var order in orders)
-            //    {
-            //        for (int i = 0; i < 3; i++) // Each order will have 3 items
-            //        {
-            //            var product = products[random.Next(products.Count)];
-            //            var quantity = random.Next(1, 5);
-            //            var orderItem = new Patron
-            //            {
-            //                OrderId = order.Id,
-            //                ProductId = product.Id,
-            //                Quantity = quantity,
-            //            };
-            //            orderItems.Add(orderItem);
-            //            order.TotalAmount += orderItem.Quantity * product.Price;
-            //        }
-            //    }
-            //    context.AddRange(orderItems);
-            //    context.UpdateRange(orders);
-
-            //    await context.SaveChangesAsync();
-            //}
 
         }
 

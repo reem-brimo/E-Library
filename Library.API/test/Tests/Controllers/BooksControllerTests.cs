@@ -152,7 +152,7 @@ namespace Tests.Controllers
         public async Task Update_ShouldReturnOk_WhenBookExists()
         {
 
-            var bookDto = new BookDto { Title = "Updated Book" };
+            var bookDto = new BookDto { Title = "Test Book", Author = "Author", ISBN = "1234567890", PublicationYear = 2023 };
 
             var operationResult = new OperationResult<HttpStatusCode, bool>
             {
@@ -175,7 +175,7 @@ namespace Tests.Controllers
         public async Task Update_ShouldReturnNotFound_WhenBookDoesNotExist()
         {
 
-            var bookDto = new BookDto { Title = "Updated Book" };
+            var bookDto = new BookDto { Title = "Test Book", Author = "Author", ISBN = "1234567890", PublicationYear = 2023 };
 
             var operationResult = new OperationResult<HttpStatusCode, bool>
             {

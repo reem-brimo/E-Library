@@ -12,11 +12,6 @@ namespace Library.Services.Mappings
             TypeAdapterConfig<PatronDto, Patron>.NewConfig();
             
             TypeAdapterConfig<Book, BookResponseDto>.NewConfig();
-            //TypeAdapterConfig<BookDto, Book>.NewConfig().Map<>(x => x.Title);
-
-
-          
-     
 
         }
     }
