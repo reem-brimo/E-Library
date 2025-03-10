@@ -9,6 +9,13 @@ Logs/
 project.lock.json
 .vs/
 
+
+# Ignore appsettings.json
+appsettings.json
+
+#a template for reference
+!appsettings.template.json
+
 # mstest test results
 TestResults
 
