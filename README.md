@@ -22,8 +22,8 @@ Before running the application, ensure you have the following installed:
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Visual Studio 2022](https://visualstudio.microsoft.com/) or [Visual Studio Code](https://code.visualstudio.com/)
-- [Postman](https://www.postman.com/) (for testing API endpoints) oe test it with Swagger in the Browser
-- [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) (or use an in-memory database for development)
+- [Postman](https://www.postman.com/) (for testing API endpoints) or test it with Swagger in the Browser
+- [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 
 ---
 
@@ -31,7 +31,7 @@ Before running the application, ensure you have the following installed:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-repo/library-management-system.git
+   git clone https://github.com/reem-brimo/E-Library.git
    cd library-management-system
 2. **Set Up the Database**:
    - If using SQL Server, update the connection string in `appsettings.json`:
@@ -156,15 +156,27 @@ The API uses **JWT (JSON Web Tokens)** for authentication. Follow these steps to
 ## API Endpoints
 
 ### **Books**
-- `GET /api/books` - Get all books.
-- `GET /api/books/{id}` - Get a book by ID.
-- `POST /api/books` - Create a new book.
-- `PUT /api/books/{id}` - Update a book.
-- `DELETE /api/books/{id}` - Delete a book.
+- `GET /api/Books` - Get all books.
+- `GET /api/Books/{id}` - Get a book by ID.
+- `POST /api/Books` - Create a new book.
+- `PUT /api/Books/{id}` - Update a book.
+- `DELETE /api/Books/{id}` - Delete a book.
+
+### **Patrons**
+
+- `GET /api/Patrons` - Get all Patrons.
+- `GET /api/Patrons/{id}` - Get a patron by ID.
+- `POST /api/Patrons` - Create a new patron.
+- `PUT /api/Patrons/{id}` - Update a patron.
+- `DELETE /api/Patrons/{id}` - Delete a patron.
+
+### **Borrowing**
+- `POST /api/borrow/{bookId}/patron/{patronId}` - Allow a patron to borrow a book.
+- `PUT /api/return/{bookId}/patron/{patronId}` - Record the return of a borrowed book by a patron.
 
 ### **Authentication**
-- `POST /api/auth/register` - Register a new user.
-- `POST /api/auth/login` - Login and get a JWT token.
+- `POST /api/Accounts/register` - Register a new user.
+- `POST /api/Accounts/login` - Login and get a JWT token.
 
 ---
 
@@ -173,10 +185,10 @@ The API uses **JWT (JSON Web Tokens)** for authentication. Follow these steps to
 You can test the API using **Postman** or **cURL**. Follow these steps:
 
 1. **Register a User**:
-   - Use the `/api/auth/register` endpoint to create a new user.
+   - Use the `/api/Accounts/register` endpoint to create a new user.
 
 2. **Login and Get JWT Token**:
-   - Use the `/api/auth/login` endpoint to get a JWT token.
+   - Use the `/api/Accounts/login` endpoint to get a JWT token.
 
 3. **Access Protected Endpoints**:
    - Include the JWT token in the `Authorization` header to access protected endpoints.
