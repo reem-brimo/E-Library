@@ -31,7 +31,7 @@ Before running the application, ensure you have the following installed:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-repo/library-management-system.git
+   git clone https://github.com/reem-brimo/E-Library.git
    cd library-management-system
 2. **Set Up the Database**:
    - If using SQL Server, update the connection string in `appsettings.json`:
