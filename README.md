@@ -23,7 +23,7 @@ Before running the application, ensure you have the following installed:
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [Visual Studio 2022](https://visualstudio.microsoft.com/) or [Visual Studio Code](https://code.visualstudio.com/)
 - [Postman](https://www.postman.com/) (for testing API endpoints) or test it with Swagger in the Browser
-- [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) (or use an in-memory database for development)
+- [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 
 ---
 
