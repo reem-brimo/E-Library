@@ -33,7 +33,7 @@ Before running the application, ensure you have the following installed:
    ```bash
    git clone https://github.com/your-repo/library-management-system.git
    cd library-management-system
-   2. **Set Up the Database**:
+2. **Set Up the Database**:
    - If using SQL Server, update the connection string in `appsettings.json`:
      ```json
      "ConnectionStrings": {
